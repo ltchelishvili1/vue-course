@@ -12,7 +12,7 @@
           name="test"
           phone-number="54435324"
           email-address="test1@email.com"
-          is-favorite="0"
+
         ></friend-contact>
       </ul>
     </section>
