@@ -6,11 +6,13 @@
           name="levani"
           phone-number="55660000"
           email-address="test@email.com"
+          is-favorite="1"
         ></friend-contact>
         <friend-contact
           name="test"
           phone-number="54435324"
           email-address="test1@email.com"
+          is-favorite="0"
         ></friend-contact>
       </ul>
     </section>
