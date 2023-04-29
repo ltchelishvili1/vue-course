@@ -5,10 +5,12 @@
       <friend-contact
         v-for="friend in friends"
         :key="friend.id"
+        :id="friend.id"
         :name="friend.name"
         :phone-number="friend.phone"
         :email-address="friend.phone"
-        v-bind:is-favorite="true"
+        v-bind:is-favorite="friend.isFavorite"
+        @toggle-favorite="toggleFavoriteStatus"
       ></friend-contact>
     </ul>
   </section>
@@ -26,15 +28,25 @@ export default {
           name: "Levani Tchelishvili",
           phone: "557700447",
           email: "tchelishvililevani@gmail.com",
+          isFavorite: true,
         },
         {
           id: "second",
           name: "Second Tchelishvili",
           phone: "555555555",
           email: "test@gmail.com",
+          isFavorite: false,
         },
       ],
     };
+  },
+  methods: {
+    toggleFavoriteStatus(friendId) {
+      const identifiedFriend = this.friends.find(
+        (friend) => friend.id === friendId
+      );
+      identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
+    },
   },
 };
 </script>
