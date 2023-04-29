@@ -1,48 +1,43 @@
 <template>
-    <section>
-      <header><h1>My Friends</h1></header>
-      <ul>
-        <friend-contact
-          name="levani"
-          phone-number="55660000"
-          email-address="test@email.com"
-          is-favorite="1"
-        ></friend-contact>
-        <friend-contact
-          name="test"
-          phone-number="54435324"
-          email-address="test1@email.com"
+  <section>
+    <header><h1>My Friends</h1></header>
+    <ul>
+      <friend-contact
+        v-for="friend in friends"
+        :key="friend.id"
+        :name="friend.name"
+        :phone-number="friend.phone"
+        :email-address="friend.phone"
+        v-bind:is-favorite="true"
+      ></friend-contact>
+    </ul>
+  </section>
+</template>
 
-        ></friend-contact>
-      </ul>
-    </section>
-  </template>
-  
-  <script>
-  import FriendContact from "./components/FriendContact.vue";
-  export default {
-    components: { FriendContact },
-    data() {
-      return {
-        friends: [
-          {
-            id: "manuel",
-            name: "Levani Tchelishvili",
-            phone: "557700447",
-            email: "tchelishvililevani@gmail.com",
-          },
-          {
-            id: "second",
-            name: "Second Tchelishvili",
-            phone: "555555555",
-            email: "test@gmail.com",
-          },
-        ],
-      };
-    },
-  };
-  </script>
-  
+<script>
+import FriendContact from "./components/FriendContact.vue";
+export default {
+  components: { FriendContact },
+  data() {
+    return {
+      friends: [
+        {
+          id: "manuel",
+          name: "Levani Tchelishvili",
+          phone: "557700447",
+          email: "tchelishvililevani@gmail.com",
+        },
+        {
+          id: "second",
+          name: "Second Tchelishvili",
+          phone: "555555555",
+          email: "test@gmail.com",
+        },
+      ],
+    };
+  },
+};
+</script>
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Jost&display=swap");
