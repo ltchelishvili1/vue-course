@@ -1,52 +1,13 @@
 <template>
-  <div>
-    <div class="container">
-      <users-list></users-list>
-    </div>
-    <div class="container">
-      <div class="block" :class="{ animate: animatedBlock }"></div>
-      <button @click="animateBlock">Animate</button>
-    </div>
-    <div class="container">
-      <transition
-        :css="false"
-        @before-enter="beforeEnter"
-        @enter="enter"
-        @after-enter="afterEnter"
-        @before-leave="beforeLeave"
-        @leave="leave"
-        @after-leave="afterLeave"
-        @enter-cancelled="enteredCancelled"
-        @leave-cancelled="leaveCancelled"
-      >
-        <p v-if="paraIsVisible">This is only dsometimes visible</p>
-      </transition>
-      <button @click="toggleParaghraph">Toggle Paragraph</button>
-    </div>
-    <div class="container">
-      <transition name="fade-button" mode="out-in">
-        <button @click="showUsers" v-if="!usersAreVisible">Show Users</button>
-        <button @click="hideUsers" v-else>Hide Users</button>
-      </transition>
-    </div>
-
-    <base-modal @close="hideDialog" :open="dialogIsVisible">
-      <p>This is a test dialog!</p>
-      <button @click="hideDialog">Close it!</button>
-    </base-modal>
-
-    <div class="container">
-      <button @click="showDialog">Show Dialog</button>
-    </div>
-  </div>
+  <router-view v-slot="slotProps">
+    <transition name="fade-button" mode="out-in"> 
+      <component :is="slotProps.Component"></component>
+      </transition
+  ></router-view>
 </template>
 
 <script>
-import UsersList from './components/UsersList.vue';
 export default {
-  components: {
-    UsersList,
-  },
   data() {
     return {
       dialogIsVisible: false,
@@ -190,6 +151,16 @@ button:active {
 .para-leave-to {
   /* opacity: 0;
   transform: translateY(30px); */
+}
+
+.route-enter-form {
+}
+.route-enter-active {
+  animation: slide-scale 0.4s ease-out;
+}
+
+.route-leave-active {
+  animation: slide-scale 0.4s ease-in;
 }
 
 .fade-button-enter-from,

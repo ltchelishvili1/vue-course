@@ -11,8 +11,8 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', component: AllUsers },
-    { path: '/goals', component: CourseGoals }
-],
+    { path: '/goals', component: CourseGoals },
+  ],
 });
 
 const app = createApp(App);
@@ -21,4 +21,6 @@ app.component('base-modal', BaseModal);
 
 app.use(router);
 
-app.mount('#app');
+router.isReady().then(function () {
+  app.mount('#app');
+});
