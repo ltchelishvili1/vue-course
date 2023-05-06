@@ -6,18 +6,18 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { reactive } from 'vue';
 
 export default {
   setup() {
-    const user = ref({
+    const user = reactive({
       name: 'maximilia',
       age: 31,
     });
 
     setTimeout(function () {
-      user.value.name = 'max';
-      user.value.age = 32;
+      user.name = 'max';
+      user.age = 32;
     }, 2000);
 
     return { user: user };
