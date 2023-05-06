@@ -14,7 +14,6 @@ export default {
     const uName = computed(function () {
       return props.firstName + ' ' + props.lastName;
     });
-
     return { userName: uName };
   },
   // computed: {
