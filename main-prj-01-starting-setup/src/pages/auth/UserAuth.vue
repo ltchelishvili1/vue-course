@@ -13,9 +13,9 @@
         Please enter a valid and password(must be at leas 6 charachters)
       </p>
       <base-button>{{ submitButtonCaption }}</base-button>
-      <base-button type="button" mode="flat" @click="switchAuthMode"
-        >{{ switchModeButtonCaption }}</base-button
-      >
+      <base-button type="button" mode="flat" @click="switchAuthMode">{{
+        switchModeButtonCaption
+      }}</base-button>
     </form></base-card
   >
 </template>
@@ -39,7 +39,7 @@ export default {
       }
     },
     switchModeButtonCaption() {
-        if (this.mode === 'login') {
+      if (this.mode === 'login') {
         return 'Signup instead';
       } else {
         return 'Login instead';
@@ -56,6 +56,15 @@ export default {
       ) {
         this.formIsValid = false;
         return;
+      }
+
+      if (this.mode === 'login') {
+        ///
+      } else {
+        this.$store.dispatch('signup', {
+          email: this.email,
+          password: this.password,
+        });
       }
     },
     switchAuthMode() {
