@@ -9,8 +9,11 @@ export default {
       areas: data.areas,
     };
 
+    const token = context.rootGetters.token;
+
     const response = await fetch(
-      `https://vue-http-demo-fd459-default-rtdb.firebaseio.com/coaches/${userId}.json`,
+      `https://vue-http-demo-fd459-default-rtdb.firebaseio.com/coaches/${userId}.json?auth=` +
+        token,
       {
         method: 'PUT',
         body: JSON.stringify(coachData),
@@ -29,7 +32,7 @@ export default {
     });
   },
   async loadCoaches(context) {
-    if(!context.getters.shouldUpdate){
+    if (!context.getters.shouldUpdate) {
       return;
     }
     const response = await fetch(
@@ -46,7 +49,7 @@ export default {
 
     for (const key in responseData) {
       const coach = {
-        id:key,
+        id: key,
         firstName: responseData[key].firstName,
         lastName: responseData[key].lastName,
         description: responseData[key].description,
@@ -56,7 +59,7 @@ export default {
       coaches.push(coach);
     }
 
-    context.commit('setCoaches', coaches)
+    context.commit('setCoaches', coaches);
     context.commit('setFetchTimestamp');
   },
 };
