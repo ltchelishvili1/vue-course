@@ -10,7 +10,7 @@
 
     <base-card>
       <header>
-        <h2>Reuests Received</h2>
+        <h2>Requests Received</h2>
       </header>
       <base-spinner v-if="isLoading"></base-spinner>
       <ul v-else-if="hasRequests && !isLoading">
